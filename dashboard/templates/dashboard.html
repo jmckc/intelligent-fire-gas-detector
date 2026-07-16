@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fire &amp; Gas Detection — Live Dashboard</title>
+<link rel="stylesheet" href="/static/css/dashboard.css">
+</head>
+<body>
+  <header>
+    <h1>🔥 Fire &amp; Gas Detection System</h1>
+    <div id="conn-status" class="badge badge-warning">Connecting…</div>
+  </header>
+
+  <section class="gauges">
+    <div class="card" id="card-gas">
+      <div class="label">Gas (ADC)</div>
+      <div class="value" id="val-gas">—</div>
+      <div class="bar-track"><div class="bar-fill" id="bar-gas"></div></div>
+      <div class="sub" id="rate-gas">rate: —</div>
+    </div>
+    <div class="card" id="card-temp">
+      <div class="label">Temperature</div>
+      <div class="value" id="val-temp">— °C</div>
+      <div class="bar-track"><div class="bar-fill" id="bar-temp"></div></div>
+      <div class="sub" id="val-hum">humidity: —</div>
+    </div>
+    <div class="card" id="card-flame">
+      <div class="label">Flame Sensor</div>
+      <div class="value" id="val-flame">—</div>
+    </div>
+    <div class="card" id="card-alarm">
+      <div class="label">Alarm Status</div>
+      <div class="value" id="val-alarm">—</div>
+      <div class="sub" id="val-time">last update: —</div>
+    </div>
+  </section>
+
+  <section class="charts">
+    <div class="card chart-card">
+      <div class="label">Gas ADC — 60 s history</div>
+      <canvas id="chart-gas"></canvas>
+    </div>
+    <div class="card chart-card">
+      <div class="label">Temperature °C — 60 s history</div>
+      <canvas id="chart-temp"></canvas>
+    </div>
+  </section>
+
+  <section class="events-section">
+    <div class="events-header">
+      <h2>Alert Events</h2>
+      <button id="btn-refresh" onclick="loadEvents()">Refresh</button>
+    </div>
+    <div class="table-wrap">
+      <table id="events-table">
+        <thead>
+          <tr>
+            <th>Time (UTC)</th><th>Trigger</th><th>AI Decision</th>
+            <th>Confidence</th><th>SMS</th><th>Email</th><th>Acked</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="events-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <div id="ack-modal" class="modal hidden">
+    <div class="modal-box">
+      <h3>Acknowledge Alert</h3>
+      <input type="hidden" id="ack-id">
+      <textarea id="ack-notes" placeholder="Optional notes…" rows="3"></textarea>
+      <div class="modal-actions">
+        <button onclick="submitAck()">Confirm</button>
+        <button class="secondary" onclick="closeAck()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script src="/static/js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Database files use the mounted Docker volume instead
+instance/
+data/
+*.db
+
+# Runtime logs
+*.log
+
+# Arduino firmware is not needed in the Flask container
+arduino/
+
+# Git metadata
+.git/
+.gitignore
+
+# Docker files are not needed inside the image
+Dockerfile
+docker-compose.yml

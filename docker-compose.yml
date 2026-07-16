@@ -1,0 +1,15 @@
+services:
+  fire-detector:
+    build: .
+    container_name: fire-detector
+    ports:
+      - "127.0.0.1:5001:5000"
+    volumes:
+      - ./data:/app/data
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=sqlite:////app/data/detector.db
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
