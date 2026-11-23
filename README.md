@@ -12,6 +12,12 @@ An IoT fire and gas monitoring project using Arduino, ESP-01, Flask, SQLite, Doc
 - Supports SMS and email notification hooks for emergency alerts
 - Runs with Docker Compose for simple local deployment
 
+## Prototype Test Video
+
+[Watch the prototype test video (MP4, approximately 22 seconds, 2.6 MB)](docs/demo/prototype-test.mp4)
+
+The video shows an Arduino Uno breadboard prototype and the web dashboard. The dashboard displays a Normal state near the start and an ALARM state with a changed gas reading later in the recording. This is a prototype demonstration, separate from the PCB assembly pictured below; it does not quantify detection accuracy or response time.
+
 ## Dashboard Preview
 
 [![Fire and gas dashboard displaying sensor readings, history charts, and alert event classifications](docs/dashboard/dashboard-2026-04-23.png)](docs/dashboard/dashboard-2026-04-23.png)
@@ -33,6 +39,12 @@ The classification labels and confidence values are outputs displayed by the app
 
 Altium design screenshots show the schematic, PCB routing, and 3D board view. Click an image to inspect the original resolution.
 
+### Physical PCB Prototype
+
+[![Physical PCB prototype with sensor modules, ESP-01, buzzer, LEDs, and supporting components](docs/hardware/pcb-prototype-photo.jpg)](docs/hardware/pcb-prototype-photo.jpg)
+
+The photograph shows the fabricated PCB with gas and flame sensor modules, a temperature/humidity module, ESP-01, buzzer, LEDs, and supporting components fitted. The Arduino Uno and relay module are not visible in this view, so the photo documents a partially populated assembly rather than a complete operational system. The PCB silkscreen labels the temperature/humidity position as DHT22; the firmware sensor configuration still needs to be reconciled with the fitted module.
+
 ### PCB 3D View
 
 [![PCB 3D view showing the Arduino Uno and peripheral component placement](docs/hardware/pcb-3d-view.png)](docs/hardware/pcb-3d-view.png)
@@ -51,7 +63,7 @@ The layout screenshot documents component placement and routing for the sensor i
 
 The schematic shows the Arduino Uno interfaces and the AMS1117-3.3 supply for the ESP-01.
 
-**Design revision note:** These screenshots label the temperature/humidity sensor as **DHT22**, while the current Arduino firmware uses `DHT dht(DHT_PIN, DHT11)`. Confirm the fitted sensor and reconcile the schematic, wiring, and firmware before using this hardware revision. These images document a design; they do not establish fabrication, assembly, or hardware test results. Native Altium files and manufacturing outputs are not included in this gallery.
+**Design revision note:** These screenshots label the temperature/humidity sensor as **DHT22**, while the current Arduino firmware uses `DHT dht(DHT_PIN, DHT11)`. Confirm the fitted sensor and reconcile the schematic, wiring, and firmware before using this hardware revision. The CAD screenshots document the design; the photograph above separately shows the physical PCB and its visible assembly state. The gallery does not establish PCB functional test results. Native Altium files and manufacturing outputs are not included in this gallery.
 
 ## Project Structure
 
@@ -65,6 +77,7 @@ dashboard/                     Web dashboard templates and static files
 arduino/                       Arduino firmware for ESP-01 AT command mode
 docs/hardware/                 Schematic, PCB layout, and 3D design screenshots
 docs/dashboard/                Dashboard demonstration screenshot
+docs/demo/                     Breadboard prototype test video
 docker-compose.yml             Docker Compose deployment
 Dockerfile                     Flask server container image
 ```
