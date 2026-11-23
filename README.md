@@ -12,6 +12,14 @@ An IoT fire and gas monitoring project using Arduino, ESP-01, Flask, SQLite, Doc
 - Supports SMS and email notification hooks for emergency alerts
 - Runs with Docker Compose for simple local deployment
 
+## Dashboard Preview
+
+[![Fire and gas dashboard displaying sensor readings, history charts, and alert event classifications](docs/dashboard/dashboard-2026-04-23.png)](docs/dashboard/dashboard-2026-04-23.png)
+
+Dashboard screenshot captured on 23 April 2026. The display shows gas ADC **305**, temperature **23.9 °C**, humidity **47%**, no flame detected, and a **Normal** current alarm status. The 60-second history charts show a gas reading spike and temperature changes; the alert table includes earlier gas and flame events with classification labels and acknowledgement controls.
+
+The classification labels and confidence values are outputs displayed by the application, rather than independently verified detection accuracy. The SMS and email fields shown contain dashes, so this screenshot does not confirm notification delivery. Click the image to view the original resolution.
+
 ## Hardware
 
 - Arduino Uno
@@ -56,6 +64,7 @@ server/services/notifier.py    SMS and email notification helpers
 dashboard/                     Web dashboard templates and static files
 arduino/                       Arduino firmware for ESP-01 AT command mode
 docs/hardware/                 Schematic, PCB layout, and 3D design screenshots
+docs/dashboard/                Dashboard demonstration screenshot
 docker-compose.yml             Docker Compose deployment
 Dockerfile                     Flask server container image
 ```
